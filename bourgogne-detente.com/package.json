@@ -1,0 +1,42 @@
+{
+  "name": "bourgogne-detente.com",
+  "version": "1.0.0",
+  "description": "Website for bourgogne-detente appartment",
+  "main": "bundle.js",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bootswatch": "^4.3.1",
+    "font-awesome": "^4.7.0",
+    "fontawesome": "^5.6.3",
+    "fullcalendar": "^3.10.1",
+    "fullpage.js": "^3.0.7",
+    "jquery": "^3.4.1",
+    "lightpick": "^1.4.5",
+    "moment": "^2.24.0",
+    "popper.js": "^1.16.0",
+    "slick-carousel": "^1.8.1"
+  },
+  "devDependencies": {
+    "browserify-livereload": "^1.0.10",
+    "node-sass": "^4.13.0",
+    "uglify-js": "3.6.0",
+    "watchify": "^3.11.1"
+  },
+  "scripts": {
+    "build-js": "browserify assets/js/main.js | uglifyjs > dist/bundle.js ",
+    "build-css": "node-sass assets/style/main.scss --output-style compressed > dist/bundle.css",
+    "build": "rm -r fonts/* ; cp -R node_modules/font-awesome/fonts .; npm run build-js & npm run build-css",
+    "watch-js": "watchify  -p browserify-livereload --host 127.0.0.1 --port 1337 assets/js/main.js -o dist/bundle.js",
+    "watch-css": "node-sass -w assets/style/main.scss dist/bundle.css",
+    "watch": "npm run watch-js & npm run watch-css",
+    "serve": "npm run watch & live-server",
+    "dist": "rm *.tgz; npm install; npm run build ; npm pack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/GotanIO/bourgogne-detente.com.git"
+  },
+  "author": "Damien Cuvillier <damien@gotan.io>",
+  "license": "UNLICENSED",
+  "homepage": "https://bitbucket.org/GotanIO/bourgogne-detente.com#readme"
+}
